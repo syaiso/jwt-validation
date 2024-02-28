@@ -78,7 +78,7 @@ public class JwtValidator {
 	}
 
 	// Método que verifica se um número é primo
-	public boolean isPrime(int number) {
+	private boolean isPrime(int number) {
 		
 		logger.info("JwtValidator -> isPrime");
 
