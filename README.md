@@ -36,6 +36,7 @@ A API foi implementada com Spring Boot 3 e Java 17, é uma solução simples ten
 - Linguagem de programação: Java 17
 - Framework web: Spring Boot 3
 - Biblioteca de Logging: Log4j
+- Biblioteca para testes unitários: Junit
 - Biblioteca para tratamento de json: org.json
 - Ferramenta de containerização: Docker
 - Provedor de cloud: AWS
@@ -107,7 +108,7 @@ Classe 'JwtValidationTest'
 
 #### ECS-FARGATE
 - na AWS criar um usuário no IAM usando a apólice para o serviço ECR da AWS
-- na máquina local usar o comando `aws configure` com as credenciais geradas para o novo usuário do AWS
+- na máquina local usar o comando `aws configure` com as credenciais geradas para o novo usuário da AWS
 - na AWS criar um repositório no serviço ECR da AWS e copiar as 4 opções de comando em 'View Push Commands'
 - editar o build.bat do projeto jwt-validation, passando os 4 comandos apontando para o Dockerfile 'docker build -t jwt-validation -f Dockerfile'
 - rodar o build.bat e após a execução verificar que foi criada a imagem da aplicação no repositório do ECR
@@ -130,9 +131,9 @@ Classe 'JwtValidationTest'
 - execute o comando 'sudo yum update' para atualizar a instância
 - execute o comando 'sudo yum install java-17-amazon-corretto-headless' para instalar o Java na instância
 - execute o comando 'java --version' para verificar se a instalação do Java foi com sucesso
-- execute o comando 'scp <Path arquivo jar> ssh ec2-user@<DNS IPV4 público>:/home/ec2-user' para copiar o jar na instância do EC2
+- execute o comando 'scp <Path arquivo jar> ec2-user@<DNS IPV4 público>:/home/ec2-user' para copiar o jar na instância do EC2
 - execute o comando 'ls' para verificar se o arquivo jar está na instância do EC2
-- execute o comando 'java -jar <arquivo jar> para subir a aplicação Java na instância do EC2
+- execute o comando 'java -jar <arquivo jar>' para subir a aplicação Java na instância do EC2
 - substitua no endpoint da API pelo DNS IPV4 público e faça a chamada GET
 
 
@@ -141,5 +142,5 @@ Classe 'JwtValidationTest'
 - Escolhi a linguagem Java e o framework Spring Boot por ter mais conhecimento e experiência.
 - Escolhi usar o Docker para containerizar a aplicação e facilitar o deploy na AWS.
 - Por simplicidade, o JWT da API foi tratado como String, pois conseguiu satisfazer todos os critérios da especificação, não sendo necessária utilização de bibliotecas como 'io.jsonwebtoken'.
-- Embora não especificado nos requisitos, foi feito deploy da aplicação no EC2 como teste de integração com o ambiente do AWS, poderia ser utilizado como uma contingência caso o deploy no ECS-Fargate não fosse realizado com sucesso.
+- Embora não especificado nos requisitos, foi feito deploy da aplicação no EC2 como teste de integração com o ambiente da AWS, poderia ser utilizado como uma contingência caso o deploy no ECS-Fargate não fosse realizado com sucesso, possibilitando um ECS-EC2.
 - Por simplicidade, acabaram não sendo feitos os processos de deploy automático, helm chart e aprovisionamento de infraestrutura pelo OpenTerraform, dando-se mais prioridade na utilização dos serviços da AWS. 
